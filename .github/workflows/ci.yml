@@ -33,6 +33,11 @@ jobs:
           else
             perl -pi -e 's/\r\n/\n/g' Dockerfile
           fi
+          
+      - name: Create application.properties from secret
+        run: |
+          mkdir -p src/main/resources
+          echo "${{ secrets.APP_PROPS_MATERIAL }}" > src/main/resources/application.properties
 
       - name: Build material jar
         run: ./gradlew clean test bootJar -Dspring.profiles.active=ci

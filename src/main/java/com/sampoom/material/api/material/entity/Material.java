@@ -19,6 +19,7 @@ public class Material {
     @Column(name = "material_id")
     private Long id;
 
+    @Column(name = "material_name")
     private String name;
 
     @Column(name = "material_code")
